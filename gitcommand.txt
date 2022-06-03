@@ -2,4 +2,6 @@ git init
 git status
 git clone
 git push
- git add -m
+ git add -A
+git push
+git commit -m "message"
