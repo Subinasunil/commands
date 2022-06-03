@@ -1,7 +1,7 @@
-git init
-git status
-git clone
+git init- to initialize git 
+git status-untrack files are list
+git clone-exact copy
 git push
  git add -A
-git push
+git pull
 git commit -m "message"
