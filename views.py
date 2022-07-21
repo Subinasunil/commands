@@ -1,48 +1,17 @@
 from django.shortcuts import render
 
 # Create your views here.
+from estore.models import products
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
 
-class AddView(APIView):
-     def post(self,request,*args,**kwargs):
-         print(request.data)
-         n1=request.data.get("num1")
-         n2=request.data.get("num2")
-         res=n1+n2
-         return Response({"msg":res})
-class subview(APIView):
+class ProductView(APIView):
+    def get(self,request,*args,**kwargs):
+        data=request.data.get("products")
+        return Response(data=products)
     def post(self,request,*args,**kwargs):
-        print(request.data)
-        n1=request.data.get("num1")
-        n2=request.data.get("num2")
-        res=n1-n2
-        return Response({"msg":res})
-
-class Multipleview(APIView):
-    def post(self,request,*args,**kwargs):
-        print(request.data)
-        n1=request.data.get("num1")
-        n2=request.data.get("num2")
-        res=n1*n2
-        return Response({"msg":res})
-
-class Cubeview(APIView):
-    def post(self,request,*args,**kwargs):
-        print(request.data)
-        n1=request.data.get("num1")
-        res=n1**3
-        return  Response({"msg":res})
-
-class FactorialView(APIView):
-    def post(self,request,*args,**kwargs):
-        print(request.data)
-        n=request.data.get("num1")
-        i=1
-        f=1
-        while(i<=n):
-            f=f*i
-            i+=1
-        return Response({"msg":f})
+        data=request.data
+        products.append(data)
+        return Response(data=products)
 
